@@ -1,0 +1,23 @@
+﻿<Window x:Class="TPC.Client.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TPC.Client"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="442.268" Width="801.546">
+    <DockPanel Margin="20">
+        <WrapPanel HorizontalAlignment="Left" DockPanel.Dock="Top">
+            <Button Name="btnSelectFile" Click="btnSelectFile_Click" Width="130" Height="30" Content="Select File..."/>
+        </WrapPanel>
+        <WrapPanel DockPanel.Dock="Top">
+            <TextBox Name="txtSelectedFile" Height="20" Width="600"/>    
+        </WrapPanel>
+        <WrapPanel DockPanel.Dock="Top">
+            <TextBox IsReadOnly="True" Name="txtFeedback" Height="20" Width="600" Background="White" Foreground="#FF7E1313"></TextBox>
+        </WrapPanel>
+    </DockPanel>
+
+
+
+</Window>

@@ -7,15 +7,17 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="442.268" Width="801.546">
     <DockPanel Margin="20">
-        <WrapPanel HorizontalAlignment="Left" DockPanel.Dock="Top">
-            <Button Name="btnSelectFile" Click="btnSelectFile_Click" Width="130" Height="30" Content="Select File..."/>
-        </WrapPanel>
-        <WrapPanel DockPanel.Dock="Top">
-            <TextBox Name="txtSelectedFile" Height="20" Width="600"/>    
-        </WrapPanel>
-        <WrapPanel DockPanel.Dock="Top">
-            <TextBox IsReadOnly="True" Name="txtFeedback" Height="20" Width="600" Background="White" Foreground="#FF7E1313"></TextBox>
-        </WrapPanel>
+        <StackPanel>
+            <WrapPanel HorizontalAlignment="Left" DockPanel.Dock="Top">
+                <Button Name="btnSelectFile" Click="btnSelectFile_Click" Width="130" Height="30" Content="Select File..."/>
+            </WrapPanel>
+            <WrapPanel DockPanel.Dock="Top">
+                <TextBox Name="txtSelectedFile" Height="20" Width="600"/>
+            </WrapPanel>
+            <WrapPanel DockPanel.Dock="Top">
+                <TextBox IsReadOnly="True" Name="txtFeedback" Height="20" Width="600" Background="White" Foreground="#FF7E1313"></TextBox>
+            </WrapPanel>
+        </StackPanel>
     </DockPanel>
 
 

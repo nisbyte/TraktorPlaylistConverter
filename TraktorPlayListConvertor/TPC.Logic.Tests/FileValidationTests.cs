@@ -7,25 +7,29 @@ namespace TPC.Logic.Tests
 	[TestClass]
 	public class FileValidationTests
 	{
+		private string _emptyString = string.Empty;
 		private string _htmlFileName = "test.html";
 		private string _exeFileName = "test.exe";
 		private string _wordFileName = "test.docx";
 
-		private string _htmlFilePath = "";
-		private string _wavFilePath = "";
-		private string _exeFilePath = "";
+		private string _htmlFilePath = "C:\\Temp\\testHtml.html";
+		private string _mp3FilePath  = "C:\\Temp\\testMp3.mp3";
+		private string _mprjFilePath  = "C:\\Temp\\testMprj.mprj";
+
+		private FileExtensionChecker _fileExtensionChecker = new FileExtensionChecker();
+		private FileMimeTypeChecker _fileMimeTypeChecker = new FileMimeTypeChecker();
+		private FileContentChecker _fileContentChecker = new FileContentChecker();
 
 		[TestMethod]
 		public void EnsureFileExtensionIsDotHtml()
 		{
-			//Arrange:
-			FileExtensionChecker fileExtensionChecker = new FileExtensionChecker();
-
 			//Act:
-			bool htmlResult = fileExtensionChecker.IsHtmlFile(_htmlFileName);
-			bool exeResult = fileExtensionChecker.IsHtmlFile(_exeFileName);
-			bool wordResult = fileExtensionChecker.IsHtmlFile(_wordFileName);
+			bool emptyResult = _fileExtensionChecker.IsHtmlFile(_emptyString);
+			bool htmlResult = _fileExtensionChecker.IsHtmlFile(_htmlFileName);
+			bool exeResult = _fileExtensionChecker.IsHtmlFile(_exeFileName);
+			bool wordResult = _fileExtensionChecker.IsHtmlFile(_wordFileName);
 			//Assert:
+			Assert.IsFalse(emptyResult);
 			Assert.IsTrue(htmlResult);
 			Assert.IsFalse(exeResult);
 			Assert.IsFalse(wordResult);
@@ -34,13 +38,13 @@ namespace TPC.Logic.Tests
 		[TestMethod]
 		public void EnsureFileMimeTypeIsTextSlashHtml()
 		{
-			//Arrange:
-			FileMimeTypeChecker fileMimeTypeChecker = new FileMimeTypeChecker();
 			//Act:
-			bool htmlResult = fileMimeTypeChecker.IsFileMimeTypeHtml(_htmlFilePath);
-			bool wavResult = fileMimeTypeChecker.IsFileMimeTypeHtml(_wavFilePath);
-			bool exeResult = fileMimeTypeChecker.IsFileMimeTypeHtml(_exeFilePath);
+			bool emptyResult = _fileMimeTypeChecker.IsFileMimeTypeHtml(_emptyString);
+			bool htmlResult = _fileMimeTypeChecker.IsFileMimeTypeHtml(_htmlFilePath);
+			bool wavResult = _fileMimeTypeChecker.IsFileMimeTypeHtml(_mp3FilePath);
+			bool exeResult = _fileMimeTypeChecker.IsFileMimeTypeHtml(_mprjFilePath);
 			//Assert:
+			Assert.IsFalse(emptyResult);
 			Assert.IsTrue(htmlResult);
 			Assert.IsFalse(wavResult);
 			Assert.IsFalse(exeResult);
@@ -49,14 +53,13 @@ namespace TPC.Logic.Tests
 		[TestMethod]
 		public void EnsureFileContentIsParsable()
 		{
-			//Arrange:
-			FileContentChecker fileContentChecker = new FileContentChecker();
-
 			//Act:
-			bool htmlResult = fileContentChecker.IsContentParsable(_htmlFilePath);
-			bool wavResult = fileContentChecker.IsContentParsable(_wavFilePath);
-			bool exeResult = fileContentChecker.IsContentParsable(_exeFilePath);
+			bool emptyResult = _fileContentChecker.IsContentParsable(_emptyString);
+			bool htmlResult = _fileContentChecker.IsContentParsable(_htmlFilePath);
+			bool wavResult = _fileContentChecker.IsContentParsable(_mp3FilePath);
+			bool exeResult = _fileContentChecker.IsContentParsable(_mprjFilePath);
 			//Assert:
+			Assert.IsFalse(emptyResult);
 			Assert.IsTrue(htmlResult);
 			Assert.IsFalse(wavResult);
 			Assert.IsFalse(exeResult);

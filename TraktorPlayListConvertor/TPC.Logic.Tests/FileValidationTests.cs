@@ -17,7 +17,6 @@ namespace TPC.Logic.Tests
 		private string _mprjFilePath  = "C:\\Temp\\testMprj.mprj";
 
 		private FileExtensionChecker _fileExtensionChecker = new FileExtensionChecker();
-		private FileMimeTypeChecker _fileMimeTypeChecker = new FileMimeTypeChecker();
 		private FileContentChecker _fileContentChecker = new FileContentChecker();
 
 		[TestMethod]
@@ -34,22 +33,7 @@ namespace TPC.Logic.Tests
 			Assert.IsFalse(exeResult);
 			Assert.IsFalse(wordResult);
 		}
-
-		[TestMethod]
-		public void EnsureFileMimeTypeIsTextSlashHtml()
-		{
-			//Act:
-			bool emptyResult = _fileMimeTypeChecker.IsFileMimeTypeHtml(_emptyString);
-			bool htmlResult = _fileMimeTypeChecker.IsFileMimeTypeHtml(_htmlFilePath);
-			bool wavResult = _fileMimeTypeChecker.IsFileMimeTypeHtml(_mp3FilePath);
-			bool exeResult = _fileMimeTypeChecker.IsFileMimeTypeHtml(_mprjFilePath);
-			//Assert:
-			Assert.IsFalse(emptyResult);
-			Assert.IsTrue(htmlResult);
-			Assert.IsFalse(wavResult);
-			Assert.IsFalse(exeResult);
-		}
-
+		
 		[TestMethod]
 		public void EnsureFileContentIsParsable()
 		{

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using HtmlAgilityPack;
 using TPC.Models;
 using TPC.Enums;
 using TPC.Helpers;
@@ -11,9 +12,11 @@ namespace TPC.Logic.FileProcessing
 {
     public class FileProcessor
     {
-        public HeadingModel GetHeadingModel(Headings heading)
+        public HeadingModel GetHeadingModel(Headings heading, HtmlDocument document)
         {
-            return new HeadingModel(EnumHelper.GetEnumDescription(heading), (int)heading);
+            HeadingModel headingModel = new HeadingModel();
+
+            return headingModel;
         }
     }
 }

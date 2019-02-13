@@ -54,6 +54,9 @@
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="HtmlAgilityPack, Version=1.8.1.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
+      <HintPath>..\packages\HtmlAgilityPack.1.8.1\lib\Net45\HtmlAgilityPack.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
@@ -105,6 +108,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -114,9 +118,21 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\TPC.Enums\TPC.Enums.csproj">
+      <Project>{59c10fd3-6968-4084-a0dd-a1c0865e3e25}</Project>
+      <Name>TPC.Enums</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TPC.Logic.FileProcessing\TPC.Logic.FileProcessing.csproj">
+      <Project>{a1595074-0275-47fc-8e88-a588a55a7ebf}</Project>
+      <Name>TPC.Logic.FileProcessing</Name>
+    </ProjectReference>
     <ProjectReference Include="..\TPC.Logic\TPC.Logic.FileValidation.csproj">
       <Project>{b1d719db-9525-4159-8388-0d152caf69d9}</Project>
       <Name>TPC.Logic.FileValidation</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TPC.Models\TPC.Models.csproj">
+      <Project>{dcc13935-6da6-49ad-ba7e-728ff07e21e0}</Project>
+      <Name>TPC.Models</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

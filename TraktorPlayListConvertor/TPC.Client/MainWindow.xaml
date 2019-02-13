@@ -5,17 +5,21 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TPC.Client"
         mc:Ignorable="d"
-        Title="MainWindow" Height="442.268" Width="801.546">
+        Title="Traktor Playlist Converter" SizeToContent="WidthAndHeight" MinHeight="400" MinWidth="800">
     <DockPanel Margin="20">
         <StackPanel>
-            <WrapPanel HorizontalAlignment="Left" DockPanel.Dock="Top">
+            <WrapPanel HorizontalAlignment="Left" DockPanel.Dock="Top" Margin="5">
                 <Button Name="btnSelectFile" Click="btnSelectFile_Click" Width="130" Height="30" Content="Select File..."/>
+                <Button Name="btnProcessFile" Click="btnProcessFile_Click" Width="130" Height="30" Content="Process File..." Margin="5 0 0 0" IsEnabled="False"/>
             </WrapPanel>
-            <WrapPanel DockPanel.Dock="Top">
-                <TextBox Name="txtSelectedFile" Height="20" Width="600"/>
+            <WrapPanel DockPanel.Dock="Top" Margin="5">
+                <TextBox Name="txtSelectedFile" Height="20" Width="740" Padding="2"/>
             </WrapPanel>
-            <WrapPanel DockPanel.Dock="Top">
-                <TextBox IsReadOnly="True" Name="txtFeedback" Height="20" Width="600" Background="White" Foreground="#FF7E1313"></TextBox>
+            <WrapPanel DockPanel.Dock="Top" Margin="5">
+                <TextBox IsReadOnly="True" Name="txtFeedback" Height="20" Width="600" Background="White" Padding="2" BorderThickness="0" Foreground="#FF7E1313"></TextBox>
+            </WrapPanel>
+            <WrapPanel DockPanel.Dock="Top" Margin="5">
+                <TextBox Name="txtResultBox" MinHeight="200" MinWidth="740"></TextBox>
             </WrapPanel>
         </StackPanel>
     </DockPanel>

@@ -1,5 +1,6 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Collections.Generic;
 using HtmlAgilityPack;
 using TPC.Logic.FileProcessing;
 using TPC.Enums;
@@ -77,20 +78,19 @@ namespace TPC.Logic.Tests
         private HtmlDocument _htmlDocument = new HtmlDocument();
         
         [TestMethod]
-        public void EnsureTableHeadingsAreRead()
+        public void EnsureSingleRowIsParsedWithArtistThenTitleCorrectly()
         {
             //Arrange:
-            HeadingModel titleHeading = new HeadingModel();
-            HeadingModel artistHeading = new HeadingModel();
+            string result = string.Empty;
             _htmlDocument.LoadHtml(_htmlWithTable);
+            List<Headings> selectedHeadings = new List<Headings>();
+            selectedHeadings.Add(Headings.Artist);
+            selectedHeadings.Add(Headings.Title);
+
             //Act:
-            titleHeading = _fileProcessor.GetHeadingModel(Headings.Title, _htmlDocument);
-            artistHeading = _fileProcessor.GetHeadingModel(Headings.Artist, _htmlDocument);
+            result  = _fileProcessor.ConvertHtmlToText(selectedHeadings, _htmlDocument);
             //Assert:
-            Assert.AreEqual("Title", titleHeading.HeadingText);
-            Assert.AreEqual("Artist", artistHeading.HeadingText);
-            Assert.AreEqual(1, titleHeading.HeadingIndex);
-            Assert.AreEqual(2, artistHeading.HeadingIndex);
+            Assert.AreEqual("ANSOME - Dragons Dynamite (Perc remix)\r\n", result);
         }
     }
 }

@@ -81,38 +81,38 @@ namespace TPC.Logic.FileProcessing
             
             foreach (HtmlNode tableRow in tableRowNodes)
             {
-                string text = null;
-                text = ExtractSelectedTextFromTableRow(selectedHeadingModels, tableRow);
-                if(text.StartsWith(" - "))
+                List<HtmlNode> tdNodes = tableRow.Descendants().ToList();
+                tdNodes = tdNodes.Where(n => n.Name == "td").ToList();
+                if(tdNodes != null && tdNodes.Count > 0)
                 {
-                    text = text.Substring(3);
+                    string text = null;
+                    text = ExtractSelectedTextFromTableRow(selectedHeadingModels, tdNodes);
+                    if (text.StartsWith(" - "))
+                    {
+                        text = text.Substring(3);
+                    }
+                    extractedText.Add(text);
                 }
-                extractedText.Add(text);
+                
             }
-
-            extractedText.RemoveAt(0);
 
             return extractedText;
         }
 
-        private string ExtractSelectedTextFromTableRow(List<HeadingModel> selectedHeadingModels, HtmlNode tableRow)
+        private string ExtractSelectedTextFromTableRow(List<HeadingModel> selectedHeadingModels, List<HtmlNode> tdNodes)
         {
             string extractedText = string.Empty;
-            
             for (int i = 0; i < selectedHeadingModels.Count; i++)
             {
                 if(i == 0)
                 {
-                    //List<HtmlNode> nodes = tableRow.SelectNodes("//td").ToList();
-                    //var shit = tableRow.ChildNodes[(selectedHeadingModels[i].HeadingIndex + 1)].InnerText;
-                    //extractedText += tableRow.SelectNodes("//td")[selectedHeadingModels[i].HeadingIndex].InnerText;
-                    extractedText += tableRow.ChildNodes[(selectedHeadingModels[i].HeadingIndex + 3)].InnerText;
+                    extractedText += tdNodes[selectedHeadingModels[i].HeadingIndex].InnerText;
                 }
                 else
                 {
                     //TODO Parameterise/Configure seperator:
                     //extractedText += " - " + tableRow.SelectNodes("//td")[selectedHeadingModels[i].HeadingIndex].InnerText;
-                    extractedText += " - " + tableRow.ChildNodes[(selectedHeadingModels[i].HeadingIndex + 2)].InnerText;
+                    extractedText += " - " + tdNodes[selectedHeadingModels[i].HeadingIndex].InnerText;
                 }
             }
 
